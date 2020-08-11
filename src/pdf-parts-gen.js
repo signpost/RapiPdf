@@ -361,7 +361,7 @@ export function getApiDef(spec, filterPath, schemaStyle, localize, includeExampl
       }
       pathSeq += 1;
       operationContent.push({
-        text: `${tagSeq + 1}.${pathSeq} ${path.method.toUpperCase()} ${path.path}`,
+        text: `${tagSeq + 1}.${pathSeq} ${path.summary}`,
         style: ['topMargin3', 'mono', 'p', 'primary', 'b'],
         tocItem: true,
         tocStyle: ['small', 'blue', 'mono'],
@@ -372,7 +372,7 @@ export function getApiDef(spec, filterPath, schemaStyle, localize, includeExampl
       let pathSummaryMarkDef; let pathDescrMarkDef;
       if (path.summary) {
         pathSummaryMarkDef = {
-          stack: markdownToPdfmake(path.summary),
+          stack: markdownToPdfmake(`${path.method.toUpperCase()} ${path.path}`),
           style: ['primary', 'b'],
         };
         operationContent.push(pathSummaryMarkDef);
