@@ -189,7 +189,7 @@ export function schemaInObjectNotation(schema, obj = {}, level = 0) {
     schema[xxxOf].map((v) => {
       if (v.type === 'object' || v.properties || v.allOf || v.anyOf || v.oneOf) {
         const partialObj = schemaInObjectNotation(v, {}, (level + 1));
-        objWithAnyOfProps[`OPTION:${i}`] = partialObj;
+        objWithAnyOfProps[`${v.title || `OPTION:${i}`}`] = partialObj;
         i++;
       } else if (v.type === 'array' || v.items) {
         const partialObj = [schemaInObjectNotation(v, {}, (level + 1))];
